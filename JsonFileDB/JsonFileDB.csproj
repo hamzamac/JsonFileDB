@@ -2,6 +2,15 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <RepositoryUrl>https://github.com/hamzamac/JsonFileDB</RepositoryUrl>
+    <Authors>Makame Makame</Authors>
+    <Company>Wadmasa</Company>
+    <Description>A Class libbray for use of JSON file as an application database</Description>
+    <PackageTags>.json,  json file, json database, file database, db</PackageTags>
+    <PackageReleaseNotes>Initial resease</PackageReleaseNotes>
+    <RepositoryType>GitHub</RepositoryType>
+    <PackageId>JsonFileDataBase</PackageId>
   </PropertyGroup>
 
   <ItemGroup>
