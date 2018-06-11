@@ -6,6 +6,6 @@ namespace JsonFileDB
 {
     public interface ITable
     {
-        long Id { get; set; }
+        int Id { get; set; }
     }
 }

@@ -7,9 +7,9 @@ namespace JsonFileDB
     public interface IDataset<E>
     {
         IEnumerable<E> GetAll();
-        object Find(long id);
+        E Find(int id);
         void Add(E value);
         void Update(E value);
-        void Remove(long id);
+        void Remove(int id);
     }
 }

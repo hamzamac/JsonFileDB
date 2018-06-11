@@ -29,7 +29,7 @@ namespace JsonFileDB
             _rowId = (int)(JValue)_table["index"];
         }
 
-        private long NextId()
+        private int NextId()
         {
             _rowId += 1;
             _table["index"] = _rowId;
@@ -49,19 +49,19 @@ namespace JsonFileDB
             _rows.Add(entityJson);
         }
 
-        public object Find(long id)
+        public E Find(int id)
         {
             var entity = _rows.FirstOrDefault(e => e.ToObject<E>().Id == id);
             if (entity == null)
             {
-                return null;
+                return default(E);
             }
             JsonSerializer serializer = new JsonSerializer();
             E firstEntity = (E)serializer.Deserialize(new JTokenReader(entity), typeof(E));
             return firstEntity;
         }
 
-        public void Remove(long id)
+        public void Remove(int id)
         {
             _rows.Remove(_rows.FirstOrDefault(e => e.ToObject<E>().Id == id));
         }
