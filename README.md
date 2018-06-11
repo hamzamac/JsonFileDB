@@ -1,6 +1,8 @@
 # JsonFileDB
 A Class libbray for use of JSON file as an application database 
 
+See [sample code](https://github.com/hamzamac/Asolvi.People/tree/WithoutDBLibrary) with Web API implementatin
+
 ### Create model classes that implements ITable interface
 These are the classes that represent your database tables in the Json file
 
