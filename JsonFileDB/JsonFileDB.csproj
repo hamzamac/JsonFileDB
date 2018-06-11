@@ -7,10 +7,14 @@
     <Authors>Makame Makame</Authors>
     <Company>Wadmasa</Company>
     <Description>A Class libbray for use of JSON file as an application database</Description>
-    <PackageTags>.json,  json file, json database, file database, db</PackageTags>
-    <PackageReleaseNotes>Initial resease</PackageReleaseNotes>
+    <PackageTags>jsonfiledb, json file database, .json,  json file, json database, file database, db</PackageTags>
+    <PackageReleaseNotes>Changed id column type to int</PackageReleaseNotes>
     <RepositoryType>GitHub</RepositoryType>
     <PackageId>JsonFileDataBase</PackageId>
+    <Product>JsonFileDataBase</Product>
+    <AssemblyVersion>1.0.1.1</AssemblyVersion>
+    <FileVersion>1.0.1.1</FileVersion>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
