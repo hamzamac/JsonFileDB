@@ -99,7 +99,7 @@ To register `AppDBContext` as a service, open `Startup.cs`, and add the `service
     }
 ```
 
-## Register the DBContext in the controler class
+## Register the DBContext in the controller class
 
 ```
     public class PersonController : Controller
