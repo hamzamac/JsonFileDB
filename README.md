@@ -1,6 +1,5 @@
 # JsonFileDataBase
 __Version 1.0.1__  
-
 Dovnload [NuGet](https://github.com/hamzamac/Asolvi.People/tree/WithoutDBLibrary)
 
 > `PM> Install-Package JsonFileDataBase -Version 1.0.1 `  
@@ -9,7 +8,7 @@ See [Sample Code](https://github.com/hamzamac/Asolvi.People/tree/WithoutDBLibrar
 
 The following is a demo fo use of JsonFileDataBase in a C# web project
 ## Create the data model
-Your model classes shouls inherit from `ITable` and thus must contain the `Id` propoerty.
+Your model classes should inherit from `ITable` and thus must contain the `Id` propoerty.
 ```
     public class Person : ITable
     {
