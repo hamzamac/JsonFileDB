@@ -3,6 +3,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace JsonFileDB
 {
@@ -38,7 +39,13 @@ namespace JsonFileDB
 
         public IEnumerable<E> GetAll()
         {
-            IList<E> entities = _rows.ToObject<IList<E>>();
+            var entities = _rows.ToObject<IList<E>>();
+            return entities;
+        }
+
+        public async Task<IEnumerable<E>> GetAllAsync()
+        {
+            var entities = await Task.Run(() => _rows.ToObject<IList<E>>());
             return entities;
         }
 
@@ -61,6 +68,18 @@ namespace JsonFileDB
             return firstEntity;
         }
 
+        public async Task<E> FindAsync(int id)
+        {
+            var entity = await Task.Run(() => _rows.FirstOrDefault(e => e.ToObject<E>().Id == id));
+            if (entity == null)
+            {
+                return default(E);
+            }
+            JsonSerializer serializer = new JsonSerializer();
+            E firstEntity = (E)serializer.Deserialize(new JTokenReader(entity), typeof(E));
+            return firstEntity;
+        }
+
         public void Remove(int id)
         {
             _rows.Remove(_rows.FirstOrDefault(e => e.ToObject<E>().Id == id));
@@ -70,5 +89,6 @@ namespace JsonFileDB
         {
             _rows.FirstOrDefault(e => e.ToObject<E>().Id == entity.Id).Replace(JToken.FromObject(entity));
         }
+
     }
 }
