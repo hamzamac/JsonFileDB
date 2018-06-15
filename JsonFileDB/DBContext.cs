@@ -23,7 +23,7 @@ namespace JsonFileDB
     public class DBContext : IDBContext
     {
         /// <value>Gets and Sets the Database instance.</value>
-        protected JObject Database { get; set; }
+        protected JObject _database{ get; set; }
 
         private string _jsonFilePath;
 
@@ -34,7 +34,7 @@ namespace JsonFileDB
         {
             //initialize the database => fetch
             _jsonFilePath = jsonFilePath;
-            Database = Fetch(jsonFilePath).GetAwaiter().GetResult();
+            _database = Fetch(jsonFilePath).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace JsonFileDB
 
             using (JsonWriter writer = new JsonTextWriter(sw))
             {
-                serializer.Serialize(writer, Database);
+                serializer.Serialize(writer, _database);
             }
         }
     }
