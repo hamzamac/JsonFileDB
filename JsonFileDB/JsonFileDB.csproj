@@ -6,15 +6,16 @@
     <RepositoryUrl>https://github.com/hamzamac/JsonFileDB</RepositoryUrl>
     <Authors>Makame Makame</Authors>
     <Company>Wadmasa</Company>
-    <Description>A Class libbray for use of JSON file as an application database</Description>
-    <PackageTags>jsonfiledb, json file database, .json,  json file, json database, file database, db</PackageTags>
-    <PackageReleaseNotes>Changed id column type to int</PackageReleaseNotes>
+    <Description>Use a json file as a database for your application utilising Dependacy injection, automatic Objact Table Mapping,  and flexible migration to other database providers.</Description>
+    <PackageTags>jsonfiledb, jsonfiledatabase, jsondatabase, filedatabase, db, NoSQL, database,file</PackageTags>
+    <PackageReleaseNotes>Includes async methos for Find and getAll operation.</PackageReleaseNotes>
     <RepositoryType>GitHub</RepositoryType>
     <PackageId>JsonFileDataBase</PackageId>
     <Product>JsonFileDataBase</Product>
     <AssemblyVersion>1.0.1.1</AssemblyVersion>
     <FileVersion>1.0.1.1</FileVersion>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
+    <PackageProjectUrl>https://github.com/hamzamac/JsonFileDB</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>
