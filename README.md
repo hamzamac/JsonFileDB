@@ -121,7 +121,7 @@ From here the Database CRUD operation can be achieved
     _db.Persons.Find(id);   //find a person with a specific id from the person table
     _db.Persons.Remove(id);  //remos the person with a specified id from the person table
     _db.Persons.Update(person); //updates the person
-    _db.SaveChanges();       //saves changes to datanase
+    _db.SaveChanges();       //saves changes to database
 ```
 
 See [Sample Code](https://github.com/hamzamac/Asolvi.People/tree/WithoutDBLibrary)
