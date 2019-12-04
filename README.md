@@ -1,5 +1,5 @@
 # JsonFileDataBase
-__Version 1.0.3__  
+__Version 1.2.0__  
 Dovnload [NuGet](https://www.nuget.org/packages/JsonFileDataBase/)
 
 > `PM> Install-Package JsonFileDataBase -Version 1.0.3 `  
