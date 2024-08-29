@@ -39,7 +39,7 @@ namespace JsonFileDB
             _rowId = (int)(JValue)_table["index"];
         }
 
-        private object NextId()
+        private int NextId()
         {
             _rowId += 1;
             _table["index"] = _rowId;
@@ -76,8 +76,7 @@ namespace JsonFileDB
         /// <typeparam name="E">A type that inherits from the ITable interface.</typeparam>
         public void Add(E entity)
         {
-            if(entity.Id == null)
-                entity.Id = NextId();
+            entity.Id = NextId();
             JObject entityJson = (JObject)JToken.FromObject(entity);
             _rows.Add(entityJson);
         }
@@ -90,7 +89,7 @@ namespace JsonFileDB
         /// </returns>
         /// <param name="id">An interger number.</param>
         /// See <see cref="Dataset.FindAsync()"/> to getAll asyncronously.
-        public E Find(object id)
+        public E Find(int id)
         {
             var entity = _rows.FirstOrDefault(e => e.ToObject<E>().Id == id);
             if (entity == null)
@@ -109,7 +108,7 @@ namespace JsonFileDB
         /// An entity with a specified id or defaut if not found.
         /// </returns>
         /// <param name="id">A integer number.</param>
-        public async Task<E> FindAsync(object id)
+        public async Task<E> FindAsync(int id)
         {
             var entity = await Task.Run(() => _rows.FirstOrDefault(e => e.ToObject<E>().Id == id));
             if (entity == null)
@@ -125,7 +124,7 @@ namespace JsonFileDB
         /// Removes an entity from the dataset.
         /// </summary>
         /// <param name="id">A interger precision number.</param>
-        public void Remove(object id)
+        public void Remove(int id)
         {
             _rows.Remove(_rows.FirstOrDefault(e => e.ToObject<E>().Id == id));
         }
