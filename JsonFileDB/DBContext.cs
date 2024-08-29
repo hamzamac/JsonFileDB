@@ -1,9 +1,8 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace JsonFileDB
@@ -23,7 +22,7 @@ namespace JsonFileDB
     public class DBContext : IDBContext
     {
         /// <value>Gets and Sets the Database instance.</value>
-        protected JObject _database{ get; set; }
+        protected JsonDocument _database { get; set; }
 
         private string _jsonFilePath;
 
@@ -40,9 +39,9 @@ namespace JsonFileDB
         /// <summary>
         /// Fetches data from json file to the database context in memory.
         /// </summary>
-        private async Task<JObject> Fetch(string jsonFilePath)
+        private async Task<JsonDocument> Fetch(string jsonFilePath)
         {
-            JObject database;
+            JsonDocument database;
             try
             {
                 if (!File.Exists(jsonFilePath))
@@ -52,12 +51,13 @@ namespace JsonFileDB
                 }
                 using (StreamReader reader = File.OpenText(jsonFilePath))
                 {
-                    database = (JObject)await JToken.ReadFromAsync(new JsonTextReader(reader));
+                    Utf8JsonReader(reader)
+                    database = (JsonDocument)await );
                 }
             }
             catch (Exception)
             {
-                database = JObject.Parse("{'system':{'rows':[],'index':0}}");
+                database = JsonDocument.Parse("{'system':{'rows':[],'index':0}}");
             }
             return database;
         }
@@ -68,14 +68,10 @@ namespace JsonFileDB
         public void SaveChanges()
         {
             //save changes to json file on disk
-            JsonSerializer serializer = new JsonSerializer();
-
-            serializer.NullValueHandling = NullValueHandling.Ignore;
-
             using (StreamWriter sw = new StreamWriter(_jsonFilePath))
-
-            using (JsonWriter writer = new JsonTextWriter(sw))
             {
+                using (Utf8JsonWriter writer = new Utf8JsonWriter(sw.BaseStream))
+                {
                     JsonSerializer.Serialize(writer, _database);
                 }
             }

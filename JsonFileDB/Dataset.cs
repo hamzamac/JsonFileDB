@@ -13,26 +13,26 @@ namespace JsonFileDB
     /// </summary>
     public class Dataset<E> : IDataset<E> where E : ITable
     {
-        private JObject _table;
+        private JsonDocument _table;
         private JArray _rows;
         private int _rowId;
 
         /// <summary>
         /// Initiaalized the a Dataset instance and makes it a table of the database.
         /// </summary>
-        /// <param name="database">A JObject object.</param>
-        public Dataset(JObject database)
+        /// <param name="database">A JsonDocument object.</param>
+        public Dataset(JsonDocument database)
         {
             //extract corresponding table to E
             var tableName = typeof(E).Name.ToLower();
-            _table = (JObject)database[tableName];
+            _table = (JsonDocument)database[tableName];
 
             //create tableof type E if not exists
             if (_table == null)
             {
                 database.Add(tableName, JToken.Parse("{'rows':[],'index':0}"));
             }
-            _table = (JObject)database[tableName];
+            _table = (JsonDocument)database[tableName];
             _rows = (JArray)_table["rows"];
 
             //set the currect row id
@@ -77,7 +77,7 @@ namespace JsonFileDB
         public void Add(E entity)
         {
             entity.Id = NextId();
-            JObject entityJson = (JObject)JToken.FromObject(entity);
+            JsonDocument entityJson = (JsonDocument)JToken.FromObject(entity);
             _rows.Add(entityJson);
         }
 
