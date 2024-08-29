@@ -76,7 +76,8 @@ namespace JsonFileDB
 
             using (JsonWriter writer = new JsonTextWriter(sw))
             {
-                serializer.Serialize(writer, _database);
+                    JsonSerializer.Serialize(writer, _database);
+                }
             }
         }
     }
