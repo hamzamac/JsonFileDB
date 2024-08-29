@@ -10,11 +10,11 @@ namespace JsonFileDB
         IEnumerable<E> GetAll();
         Task<IEnumerable<E>> GetAllAsync();
 
-        E Find(object id);
-        Task<E> FindAsync(object id);
+        E Find(int id);
+        Task<E> FindAsync(int id);
 
         void Add(E value);
         void Update(E value);
-        void Remove(object id);
+        void Remove(int id);
     }
 }

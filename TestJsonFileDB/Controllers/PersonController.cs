@@ -49,7 +49,7 @@ namespace TestJsonFileDB.Controllers
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody]Person newPerson)
         {
-           if (newPerson == null || (int)newPerson.Id != id)
+           if (newPerson == null || newPerson.Id != id)
             {
                 BadRequest();
             }
