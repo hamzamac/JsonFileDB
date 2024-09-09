@@ -49,11 +49,9 @@ namespace JsonFileDB
                     //TODO initialize a database file with all attributes of Dataset object
                     File.WriteAllText(jsonFilePath, "{'system':{'rows':[],'index':0}}");
                 }
-                using (StreamReader reader = File.OpenText(jsonFilePath))
-                {
-                    Utf8JsonReader(reader)
-                    database = (JsonDocument)await );
-                }
+                byte[] fileBytes = File.ReadAllBytes(jsonFilePath);
+
+     
             }
             catch (Exception)
             {
